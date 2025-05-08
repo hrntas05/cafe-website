@@ -7,7 +7,7 @@ const menuItems = [
     name: 'Türk Kahvesi',
     description: 'Geleneksel Türk kahvesi',
     price: '₺50',
-    image: 'https://unsplash.com/photos/a-cup-of-coffee-on-a-table-XkJpVdda1BA'
+    image: '/images/espresso-making.jpg'
   },
   {
     id: 2,

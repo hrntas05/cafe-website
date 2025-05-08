@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Gallery from './pages/Gallery';
 import Reviews from './pages/Reviews';
+import Blog from './pages/Blog';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/reviews" element={<Reviews />} />
+            <Route path="/blog" element={<Blog />} />
           </Routes>
           <Footer />
         </div>
