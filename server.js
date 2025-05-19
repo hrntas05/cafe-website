@@ -1,11 +1,15 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const port = 3001; // Or any port you prefer
 
 const productsFilePath = path.join(__dirname, 'products.json');
+
+// Enable CORS
+app.use(cors());
 
 // Middleware to parse JSON request bodies
 app.use(express.json());

@@ -17,7 +17,7 @@ const AdminPanel = () => {
   // Function to fetch products from the API
   const fetchProducts = async () => {
     try {
-      const response = await fetch('/products');
+      const response = await fetch('http://localhost:3001/products');
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
@@ -43,7 +43,7 @@ const AdminPanel = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/products', {
+      const response = await fetch('http://localhost:3001/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,9 +60,9 @@ const AdminPanel = () => {
       setNewProduct({
         name: '',
         price: '',
-    description: '',
-    category: '',
-    image: ''
+        description: '',
+        category: '',
+        image: ''
       });
     } catch (error) {
       console.error('Error adding product:', error);
@@ -73,7 +73,7 @@ const AdminPanel = () => {
   // Ürün güncelleme
   const handleUpdateProduct = async (id) => {
     try {
-      const response = await fetch(`/products/${id}`, {
+      const response = await fetch(`http://localhost:3001/products/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const AdminPanel = () => {
   // Ürün silme
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await fetch(`/products/${id}`, {
+      const response = await fetch(`http://localhost:3001/products/${id}`, {
         method: 'DELETE',
       });
 

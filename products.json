@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "1747655282064",
+    "name": "test",
+    "price": "111",
+    "description": "test",
+    "category": "test",
+    "image": "https://images.unsplash.com/photo-1726065235203-4368c41c6f19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": "1747655422595",
+    "name": "kahve",
+    "price": "120",
+    "description": "sıcak kahve",
+    "category": "kahve",
+    "image": "https://plus.unsplash.com/premium_photo-1675435644687-562e8042b9db?q=80&w=1949&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": "1747655750668",
+    "name": "Kek",
+    "price": "70",
+    "description": "Portakallı enfes kek",
+    "category": "tatlılar",
+    "image": "https://images.unsplash.com/photo-1642646906737-eaea251ff2f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+]
