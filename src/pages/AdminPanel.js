@@ -14,42 +14,103 @@ const AdminPanel = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const navigate = useNavigate();
 
+  // Function to fetch products from the API
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('/products');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      // Optionally show an error message to the user
+    }
+  };
+
   useEffect(() => {
     // Check if user is authenticated
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (!isAuthenticated) {
       navigate('/admin/login');
     }
-  }, [navigate]);
+    // Fetch products when the component mounts
+    fetchProducts();
+  }, [navigate]); // Added fetchProducts to the dependency array if you want it to refetch on navigate changes
 
   // Yeni ürün ekleme
-  const handleAddProduct = (e) => {
+  const handleAddProduct = async (e) => {
     e.preventDefault();
-    const product = {
-      id: Date.now(),
-      ...newProduct
-    };
-    setProducts([...products, product]);
-    setNewProduct({
-      name: '',
-      price: '',
-      description: '',
-      category: '',
-      image: ''
-    });
+    try {
+      const response = await fetch('/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newProduct),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add product');
+      }
+
+      // After successfully adding, refetch the products to update the list
+      fetchProducts();
+      setNewProduct({
+        name: '',
+        price: '',
+    description: '',
+    category: '',
+    image: ''
+      });
+    } catch (error) {
+      console.error('Error adding product:', error);
+      // Optionally show an error message to the user
+    }
   };
 
   // Ürün güncelleme
-  const handleUpdateProduct = (id) => {
-    setProducts(products.map(product => 
-      product.id === id ? editingProduct : product
-    ));
-    setEditingProduct(null);
+  const handleUpdateProduct = async (id) => {
+    try {
+      const response = await fetch(`/products/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editingProduct),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update product');
+      }
+
+      // After successfully updating, refetch the products
+      fetchProducts();
+      setEditingProduct(null);
+    } catch (error) {
+      console.error('Error updating product:', error);
+      // Optionally show an error message to the user
+    }
   };
 
   // Ürün silme
-  const handleDeleteProduct = (id) => {
-    setProducts(products.filter(product => product.id !== id));
+  const handleDeleteProduct = async (id) => {
+    try {
+      const response = await fetch(`/products/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete product');
+      }
+
+      // After successfully deleting, refetch the products
+      fetchProducts();
+    } catch (error) {
+      console.error('Error deleting product:', error);
+      // Optionally show an error message to the user
+    }
   };
 
   return (
