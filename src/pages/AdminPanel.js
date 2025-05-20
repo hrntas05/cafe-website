@@ -30,14 +30,14 @@ const AdminPanel = () => {
   };
 
   useEffect(() => {
-    // Check if user is authenticated
+    // kullanıcı yetkisni kontrol ediyor(Harun Taş)
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (!isAuthenticated) {
       navigate('/admin/login');
     }
-    // Fetch products when the component mounts
+    
     fetchProducts();
-  }, [navigate]); // Added fetchProducts to the dependency array if you want it to refetch on navigate changes
+  }, [navigate]); 
 
   // Yeni ürün ekleme
   const handleAddProduct = async (e) => {
@@ -55,7 +55,7 @@ const AdminPanel = () => {
         throw new Error('Failed to add product');
       }
 
-      // After successfully adding, refetch the products to update the list
+      
       fetchProducts();
       setNewProduct({
         name: '',
@@ -85,12 +85,12 @@ const AdminPanel = () => {
         throw new Error('Failed to update product');
       }
 
-      // After successfully updating, refetch the products
+      // tekrar ürünleri çekiyor
       fetchProducts();
       setEditingProduct(null);
     } catch (error) {
       console.error('Error updating product:', error);
-      // Optionally show an error message to the user
+      
     }
   };
 
@@ -105,11 +105,11 @@ const AdminPanel = () => {
         throw new Error('Failed to delete product');
       }
 
-      // After successfully deleting, refetch the products
+    
       fetchProducts();
     } catch (error) {
       console.error('Error deleting product:', error);
-      // Optionally show an error message to the user
+     
     }
   };
 

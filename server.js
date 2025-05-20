@@ -4,17 +4,17 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const port = 3001; // Or any port you prefer
+const port = 3001; // 
 
 const productsFilePath = path.join(__dirname, 'products.json');
 
-// Enable CORS
+
 app.use(cors());
 
-// Middleware to parse JSON request bodies
+
 app.use(express.json());
 
-// Helper function to read products from the file
+
 const readProducts = () => {
   try {
     const data = fs.readFileSync(productsFilePath, 'utf8');
@@ -25,7 +25,7 @@ const readProducts = () => {
   }
 };
 
-// Helper function to write products to the file
+
 const writeProducts = (products) => {
   try {
     fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2), 'utf8');
@@ -34,13 +34,13 @@ const writeProducts = (products) => {
   }
 };
 
-// GET all products
+
 app.get('/products', (req, res) => {
   const products = readProducts();
   res.json(products);
 });
 
-// POST add a new product
+
 app.post('/products', (req, res) => {
   const products = readProducts();
   const newProduct = { id: Date.now().toString(), ...req.body }; // Simple ID generation
@@ -49,7 +49,7 @@ app.post('/products', (req, res) => {
   res.status(201).json(newProduct);
 });
 
-// PUT update a product by id
+
 app.put('/products/:id', (req, res) => {
   const products = readProducts();
   const productId = req.params.id;
@@ -66,7 +66,7 @@ app.put('/products/:id', (req, res) => {
   res.json(products[productIndex]);
 });
 
-// DELETE delete a product by id
+
 app.delete('/products/:id', (req, res) => {
   const products = readProducts();
   const productId = req.params.id;

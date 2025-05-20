@@ -10,18 +10,18 @@ body {
   font-family: 'Playfair Display', 'Roboto', 'Arial', sans-serif;
 }
 
-/* Smooth scrolling */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Responsive images */
+/* Responsive resimler icin*/
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Card hover effects */
+
 .MuiCard-root {
   transition: transform 0.2s ease-in-out;
 }
